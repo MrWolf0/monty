@@ -21,6 +21,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 	};
 	/*Get the opcode by extracting the first token indicating the instruction */
 	char *opcode = strtok(content, " \n\t");
+	int i;
 
 	/*If opcode is not presented or # is found (indicating a comment), return 0 */
 	if (opcode == NULL || opcode[0] == '#')
@@ -31,7 +32,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 	__line__ = strtok(NULL, " \n\t");
 	/*Loop to match the opcode with the function that will be executed */
 	/*Compare the first token with the instruction_t array */
-	for (unsigned int i = 0; opst[i].opcode != NULL; ++i)
+	for (i = 0; opst[i].opcode != NULL; ++i)
 	{
 		if (strcmp(opcode, opst[i].opcode) == 0)
 		{ /*Call the stack function to perform the instruction */
